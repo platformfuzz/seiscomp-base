@@ -21,3 +21,5 @@ docker run --rm -it ghcr.io/platformfuzz/seiscomp-base:7.3.1
 ```bash
 docker build -t seiscomp-base:test .
 ```
+
+Tag `v*` publishes GHCR and fires `repository_dispatch` `seiscomp-base-released` on `seiscomp-gui` so the pin workflow does not wait for the daily cron. That job needs the same App secrets as GUI (`SEISCOMP_BUMP_APP_CLIENT_ID`, `SEISCOMP_BUMP_APP_PRIVATE_KEY`) on this repo. The App does not need to be installed here; it only needs access to `seiscomp-gui`.
